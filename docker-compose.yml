@@ -35,9 +35,6 @@ services:
     #  - net.ipv4.tcp_congestion_control=bbrplus
     # 数据卷所挂载路径设置
     volumes:
-      # 数据目录
-      - ./zbx_env/data/mysql:/var/lib/mysql:rw,cached
-      - ./zbx_env/data/mysql-files:/var/lib/mysql-files:rw,cached
       # 配置目录与文件
       - ./conf/mysql/my.cnf:/etc/mysql/my.cnf:rw,cached
       # 同步宿主机时区与时间
@@ -219,15 +216,6 @@ services:
     # 数据卷所挂载路径设置
     volumes:
       # 配置目录与文件
-      - ./zbx_env/usr/local/zabbix/scripts:/usr/local/zabbix/scripts:rw,cached
-      - ./zbx_env/usr/local/zabbix/alertscripts:/usr/local/zabbix/alertscripts:rw,cached
-      - ./zbx_env/usr/local/zabbix/externalscripts:/usr/local/zabbix/externalscripts:rw,cached
-      - ./zbx_env/usr/local/zabbix/zabbix_server.conf.d:/usr/local/zabbix/etc/zabbix_server.conf.d:rw,cached
-      - ./zbx_env/usr/local/zabbix/export:/usr/local/zabbix/export:rw,cached
-      - ./zbx_env/usr/local/zabbix/modules:/usr/local/zabbix/modules:rw,cached
-      - ./zbx_env/usr/local/zabbix/enc:/usr/local/zabbix/enc:rw,cached
-      - ./zbx_env/usr/local/zabbix/ssh_keys:/usr/local/zabbix/ssh_keys:rw,cached
-      - ./zbx_env/usr/local/zabbix/mibs:/usr/local/zabbix/mibs:rw,cached
       - snmptraps:/usr/local/zabbix/snmptraps:rw,cached
       # 同步宿主机时区与时间
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
@@ -295,15 +283,6 @@ services:
     # 数据卷所挂载路径设置
     volumes:
       # 配置目录与文件
-      - ./zbx_env/usr/local/zabbix/scripts:/usr/local/zabbix/scripts:rw,cached
-      - ./zbx_env/usr/local/zabbix/alertscripts:/usr/local/zabbix/alertscripts:rw,cached
-      - ./zbx_env/usr/local/zabbix/externalscripts:/usr/local/zabbix/externalscripts:rw,cached
-      - ./zbx_env/usr/local/zabbix/zabbix_proxy.conf.d:/usr/local/zabbix/etc/zabbix_proxy.conf.d:rw,cached
-      - ./zbx_env/usr/local/zabbix/export:/usr/local/zabbix/export:rw,cached
-      - ./zbx_env/usr/local/zabbix/modules:/usr/local/zabbix/modules:rw,cached
-      - ./zbx_env/usr/local/zabbix/enc:/usr/local/zabbix/enc:rw,cached
-      - ./zbx_env/usr/local/zabbix/ssh_keys:/usr/local/zabbix/ssh_keys:rw,cached
-      - ./zbx_env/usr/local/zabbix/mibs:/usr/local/zabbix/mibs:rw,cached
       - snmptraps:/usr/local/zabbix/snmptraps:rw,cached
       # 同步宿主机时区与时间
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
@@ -371,8 +350,6 @@ services:
     #  - net.ipv4.tcp_congestion_control=bbrplus
     # 数据卷所挂载路径设置
     volumes:
-      # 配置目录与文件
-      - ./zbx_env/usr/local/zabbix/enc:/usr/local/zabbix/enc:rw,cached
       # 同步宿主机时区与时间
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
       - /etc/localtime:/etc/localtime:ro,cached
@@ -429,10 +406,6 @@ services:
     #  - net.ipv4.tcp_congestion_control=bbrplus
     # 数据卷所挂载路径设置
     volumes:
-      # 配置目录与文件
-      #- ./conf/nginx/ssl:/ssl:rw,cached
-      # - ./conf/nginx/vhost:/data/nginx/conf/vhost:rw,cached
-      # - ./conf/nginx/php.conf:/data/nginx/conf/php.conf:rw,cached
       # 日志目录
       - ./logs/nginx:/data/nginx/logs:delegated
       # 同步宿主机时区与时间
@@ -500,12 +473,6 @@ services:
     #  - net.ipv4.tcp_congestion_control=bbrplus
     # 数据卷所挂载路径设置
     volumes:
-      # 配置目录与文件
-      - ./zbx_env/usr/local/zabbix/scripts:/usr/local/zabbix/scripts:rw,cached
-      - ./zbx_env/usr/local/zabbix/zabbix_agentd.conf.d:/usr/local/zabbix/etc/zabbix_agentd.conf.d:rw,cached
-      - ./zbx_env/usr/local/zabbix/export:/usr/local/zabbix/export:rw,cached
-      - ./zbx_env/usr/local/zabbix/modules:/usr/local/zabbix/modules:rw,cached
-      - ./zbx_env/usr/local/zabbix/enc:/usr/local/zabbix/enc:rw,cached
       # 同步宿主机时区与时间
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
       - /etc/localtime:/etc/localtime:ro,cached
