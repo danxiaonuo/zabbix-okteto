@@ -21,6 +21,9 @@ services:
      - --default-authentication-plugin=mysql_native_password  
     # 允许容器中运行一些特权命令
     privileged: true
+    # docker安全验证
+    security_opt:
+      - seccomp:unconfined
     # 跟主机系统共享进程命名空间
     # pid: "host"
     # 指定容器退出后的重启策略为始终重启
@@ -37,12 +40,6 @@ services:
     volumes:
       # 配置目录与文件
       - ./conf/mysql/my.cnf:/etc/mysql/my.cnf:rw,cached
-      # 同步宿主机时区与时间
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
-      - /etc/localtime:/etc/localtime:ro,cached
-      # 共享内核
-      #- /lib/modules:/lib/modules:ro,cached
-      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
     env_file:
      - ./.env_vars/.env_db_mysql
     secrets:
@@ -101,12 +98,6 @@ services:
     volumes:
       # 配置目录与文件
       - snmptraps:/usr/local/zabbix/snmptraps:rw,cached
-      # 同步宿主机时区与时间
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
-      - /etc/localtime:/etc/localtime:ro,cached
-      # 共享内核
-      #- /lib/modules:/lib/modules:ro,cached
-      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
     # 指定设备映射关系
     #devices:
     # - /dev/net/tun
@@ -155,14 +146,6 @@ services:
     #  - net.ipv4.tcp_ecn=1
     #  - net.ipv4.tcp_ecn_fallback=1
     #  - net.ipv4.tcp_congestion_control=bbrplus
-    # 数据卷所挂载路径设置
-    volumes:
-      # 同步宿主机时区与时间
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
-      - /etc/localtime:/etc/localtime:ro,cached
-      # 共享内核
-      #- /lib/modules:/lib/modules:ro,cached
-      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
     env_file:
      - ./.env_vars/.env_java
     # 指定设备映射关系
@@ -213,14 +196,6 @@ services:
     #  - net.ipv4.tcp_ecn=1
     #  - net.ipv4.tcp_ecn_fallback=1
     #  - net.ipv4.tcp_congestion_control=bbrplus
-    # 数据卷所挂载路径设置
-    volumes:
-      # 同步宿主机时区与时间
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
-      - /etc/localtime:/etc/localtime:ro,cached
-      # 共享内核
-      #- /lib/modules:/lib/modules:ro,cached
-      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
     env_file:
      - ./.env_vars/.env_db_mysql
      - ./.env_vars/.env_srv
@@ -278,14 +253,6 @@ services:
     #  - net.ipv4.tcp_ecn=1
     #  - net.ipv4.tcp_ecn_fallback=1
     #  - net.ipv4.tcp_congestion_control=bbrplus
-    # 数据卷所挂载路径设置
-    volumes:
-      # 同步宿主机时区与时间
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
-      - /etc/localtime:/etc/localtime:ro,cached
-      # 共享内核
-      #- /lib/modules:/lib/modules:ro,cached
-      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
     env_file:
      - ./.env_vars/.env_db_mysql_proxy
      - ./.env_vars/.env_prx
@@ -344,14 +311,6 @@ services:
     #  - net.ipv4.tcp_ecn=1
     #  - net.ipv4.tcp_ecn_fallback=1
     #  - net.ipv4.tcp_congestion_control=bbrplus
-    # 数据卷所挂载路径设置
-    volumes:
-      # 同步宿主机时区与时间
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
-      - /etc/localtime:/etc/localtime:ro,cached
-      # 共享内核
-      #- /lib/modules:/lib/modules:ro,cached
-      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
     env_file:
      - ./.env_vars/.env_web_service
     # 指定设备映射关系
@@ -400,16 +359,6 @@ services:
     #  - net.ipv4.tcp_ecn=1
     #  - net.ipv4.tcp_ecn_fallback=1
     #  - net.ipv4.tcp_congestion_control=bbrplus
-    # 数据卷所挂载路径设置
-    volumes:
-      # 日志目录
-      - ./logs/nginx:/data/nginx/logs:delegated
-      # 同步宿主机时区与时间
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
-      - /etc/localtime:/etc/localtime:ro,cached
-      # 共享内核
-      #- /lib/modules:/lib/modules:ro,cached
-      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
     env_file:
      - ./.env_vars/.env_db_mysql
      - ./.env_vars/.env_web
@@ -467,14 +416,6 @@ services:
     #  - net.ipv4.tcp_ecn=1
     #  - net.ipv4.tcp_ecn_fallback=1
     #  - net.ipv4.tcp_congestion_control=bbrplus
-    # 数据卷所挂载路径设置
-    volumes:
-      # 同步宿主机时区与时间
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
-      - /etc/localtime:/etc/localtime:ro,cached
-      # 共享内核
-      #- /lib/modules:/lib/modules:ro,cached
-      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
     env_file:
      - ./.env_vars/.env_agent
     # 指定设备映射关系
